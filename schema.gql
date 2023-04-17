@@ -2,10 +2,50 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type SupplierContactRole {
+  role: [SupplierContactRole!]
+}
+
+type SupplierContact {
+  name: String
+  email: String
+  role: [SupplierContactRole!]
+  phone: String
+}
+
 type Supplier {
-  id: String
+  name: String
+  email: String
+  address: String
+  vatNumber: String
+  contacts: [SupplierContact!]
+  billboardTypes: [String!]
+}
+
+input SupplierContactRoleInput {
+  role: [SupplierContactRoleInput!]
+}
+
+input SupplierContactInput {
+  name: String
+  email: String
+  role: [SupplierContactRoleInput!]
+  phone: String
+}
+
+input SupplierInput {
+  name: String
+  email: String
+  address: String
+  vatNumber: String
+  contacts: [SupplierContactInput!]
+  billboardTypes: [String!]
 }
 
 type Query {
   suppliers: [Supplier!]!
+}
+
+type Mutation {
+  createSupplier(supplier: SupplierInput!): Supplier!
 }
