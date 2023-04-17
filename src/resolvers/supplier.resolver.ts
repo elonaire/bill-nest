@@ -18,4 +18,18 @@ export class SupplierResolver {
   ): Promise<Supplier> {
     return this.supplierService.createSupplier(supplier);
   }
+
+  @Mutation(() => Supplier)
+  async updateSupplier(
+    @Args('supplier', { type: () => Supplier }) supplier: SupplierSchema,
+  ): Promise<any> {
+    return this.supplierService.updateSupplier(supplier);
+  }
+
+  @Mutation(() => Supplier)
+  async deleteSupplier(
+    @Args('id', { type: () => String }) id: string,
+  ): Promise<any> {
+    return this.supplierService.deleteSupplier(id);
+  }
 }

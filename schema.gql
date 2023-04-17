@@ -48,4 +48,6 @@ type Query {
 
 type Mutation {
   createSupplier(supplier: SupplierInput!): Supplier!
+  updateSupplier(supplier: SupplierInput!): Supplier!
+  deleteSupplier(id: String!): Supplier!
 }

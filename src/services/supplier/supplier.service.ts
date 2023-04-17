@@ -17,4 +17,12 @@ export class SupplierService {
   async createSupplier(supplier: Supplier) {
     return this.supplierModel.create(supplier);
   }
+
+  async updateSupplier(supplier: Supplier) {
+    return this.supplierModel.updateOne({ id: supplier.id }, supplier);
+  }
+
+  async deleteSupplier(id: string) {
+    return this.supplierModel.deleteOne({ id });
+  }
 }
