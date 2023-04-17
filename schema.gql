@@ -1,0 +1,11 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Supplier {
+  id: String
+}
+
+type Query {
+  suppliers: [Supplier!]!
+}
