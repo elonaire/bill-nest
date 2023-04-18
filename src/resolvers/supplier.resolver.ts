@@ -8,8 +8,8 @@ export class SupplierResolver {
   constructor(private readonly supplierService: SupplierService) {}
 
   @Query(() => [Supplier])
-  async suppliers(): Promise<Supplier[]> {
-    return [];
+  async getSuppliers(): Promise<Supplier[]> {
+    return this.supplierService.getSuppliers();
   }
 
   @Mutation(() => Supplier)

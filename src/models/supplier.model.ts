@@ -5,6 +5,9 @@ import { SupplierContact } from './supplier-contact.model';
 @InputType('SupplierInput')
 export class Supplier {
   @Field(() => String, { nullable: true })
+  id?: string;
+
+  @Field(() => String, { nullable: true })
   name: string;
 
   @Field(() => String, { nullable: true })

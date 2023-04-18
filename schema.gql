@@ -14,6 +14,7 @@ type SupplierContact {
 }
 
 type Supplier {
+  id: String
   name: String
   email: String
   address: String
@@ -34,6 +35,7 @@ input SupplierContactInput {
 }
 
 input SupplierInput {
+  id: String
   name: String
   email: String
   address: String
@@ -43,7 +45,7 @@ input SupplierInput {
 }
 
 type Query {
-  suppliers: [Supplier!]!
+  getSuppliers: [Supplier!]!
 }
 
 type Mutation {
