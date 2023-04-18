@@ -19,10 +19,10 @@ export class SupplierService {
   }
 
   async updateSupplier(supplier: Supplier) {
-    return this.supplierModel.updateOne({ id: supplier.id }, supplier);
+    return this.supplierModel.updateOne({ _id: supplier.id }, supplier);
   }
 
   async deleteSupplier(id: string) {
-    return this.supplierModel.deleteOne({ id });
+    return this.supplierModel.deleteOne({ _id: id });
   }
 }
