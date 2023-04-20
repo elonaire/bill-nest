@@ -3,7 +3,8 @@
 # ------------------------------------------------------
 
 type SupplierContactRole {
-  role: [SupplierContactRole!]
+  id: String
+  role: String
 }
 
 type SupplierContact {
@@ -24,7 +25,8 @@ type Supplier {
 }
 
 input SupplierContactRoleInput {
-  role: [SupplierContactRoleInput!]
+  id: String
+  role: String
 }
 
 input SupplierContactInput {
@@ -46,10 +48,18 @@ input SupplierInput {
 
 type Query {
   getSuppliers: [Supplier!]!
+  getSupplierContactRoles: [SupplierContactRole!]!
+  getSupplierContacts: [SupplierContact!]!
 }
 
 type Mutation {
   createSupplier(supplier: SupplierInput!): Supplier!
   updateSupplier(supplier: SupplierInput!): Supplier!
   deleteSupplier(id: String!): Supplier!
+  createSupplierContactRole(supplierContactRole: SupplierContactRoleInput!): SupplierContactRole!
+  updateSupplierContactRole(supplierContactRole: SupplierContactRoleInput!): SupplierContactRole!
+  deleteSupplierContactRole(id: String!): SupplierContactRole!
+  createSupplierContact(supplierContact: SupplierContactInput!, supplierId: String!, supplierContactRoleIds: [String!]!): SupplierContact!
+  updateSupplierContact(supplierContact: SupplierContactInput!): SupplierContact!
+  deleteSupplierContact(id: String!): SupplierContact!
 }

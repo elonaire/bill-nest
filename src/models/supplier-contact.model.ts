@@ -11,7 +11,7 @@ export class SupplierContact {
   email: string;
 
   @Field(() => [SupplierContactRole], { nullable: true })
-  role: SupplierContactRole[];
+  role?: SupplierContactRole[];
 
   @Field(() => String, { nullable: true })
   phone: string;
