@@ -32,6 +32,10 @@ export class SupplierService {
     return this.supplierModel.deleteOne({ _id: id });
   }
 
+  async getSupplier(id: string) {
+    return this.supplierModel.findById(id);
+  }
+
   /* Supplier Contact Role */
   async getSupplierContactRoles() {
     return this.supplierContactRoleModel.find();

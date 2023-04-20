@@ -37,6 +37,13 @@ export class SupplierResolver {
     return this.supplierService.deleteSupplier(id);
   }
 
+  @Query(() => Supplier)
+  async getSupplierById(
+    @Args('id', { type: () => String }) id: string,
+  ): Promise<Supplier> {
+    return this.supplierService.getSupplier(id);
+  }
+
   /* Supplier Contact Role */
   @Query(() => [SupplierContactRole])
   async getSupplierContactRoles(): Promise<SupplierContactRole[]> {

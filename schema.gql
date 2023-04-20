@@ -48,6 +48,7 @@ input SupplierInput {
 
 type Query {
   getSuppliers: [Supplier!]!
+  getSupplierById(id: String!): Supplier!
   getSupplierContactRoles: [SupplierContactRole!]!
   getSupplierContacts: [SupplierContact!]!
 }
