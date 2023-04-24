@@ -36,6 +36,10 @@ export class SupplierService {
     return this.supplierModel.findById(id);
   }
 
+  async getSupplierContactsBySupplierId(supplierId: string) {
+    return (await this.supplierModel.findById(supplierId)).contacts;
+  }
+
   /* Supplier Contact Role */
   async getSupplierContactRoles() {
     return this.supplierContactRoleModel.find();
@@ -75,6 +79,8 @@ export class SupplierService {
       supplierContact.role.push(supplierContactRole);
     }
 
+    console.log('supplierContact', supplierContact);
+
     const createdSupplierContact = await this.supplierContactModel.create(
       supplierContact,
     );
@@ -100,8 +106,8 @@ export class SupplierService {
     });
 
     await this.supplierModel.updateMany(
-      { contacts: id },
-      { $pull: { contacts: id } },
+      { 'contacts._id': id },
+      { $pull: { contacts: { _id: id } } },
     );
 
     return deletedSupplierContact;

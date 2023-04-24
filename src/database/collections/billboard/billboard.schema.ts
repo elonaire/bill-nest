@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { BillboardType } from './billboard-type.schema';
 
 @Schema({
   timestamps: true,
@@ -15,7 +16,7 @@ export class Billboard extends Document {
   billboardNumber: number;
 
   @Prop({ required: true })
-  billboardType: string;
+  billboardType: BillboardType;
 
   @Prop({ required: true })
   totalSize: number;

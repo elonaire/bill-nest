@@ -3,11 +3,12 @@
 # ------------------------------------------------------
 
 type SupplierContactRole {
-  id: String
+  _id: String
   role: String
 }
 
 type SupplierContact {
+  _id: String
   name: String
   email: String
   role: [SupplierContactRole!]
@@ -24,12 +25,26 @@ type Supplier {
   billboardTypes: [String!]
 }
 
-input SupplierContactRoleInput {
+type BillboardType {
   id: String
+  name: String
+}
+
+type Billboard {
+  id: String
+  address: String
+  billboardNumber: Float
+  billboardType: String
+  totalSize: Float
+}
+
+input SupplierContactRoleInput {
+  _id: String
   role: String
 }
 
 input SupplierContactInput {
+  _id: String
   name: String
   email: String
   role: [SupplierContactRoleInput!]
@@ -46,11 +61,27 @@ input SupplierInput {
   billboardTypes: [String!]
 }
 
+input BillboardTypeInput {
+  id: String
+  name: String
+}
+
+input BillboardInput {
+  id: String
+  address: String
+  billboardNumber: Float
+  billboardType: String
+  totalSize: Float
+}
+
 type Query {
   getSuppliers: [Supplier!]!
   getSupplierById(id: String!): Supplier!
   getSupplierContactRoles: [SupplierContactRole!]!
-  getSupplierContacts: [SupplierContact!]!
+  getSupplierContacts(supplierId: String!): [SupplierContact!]!
+  getBillboards: [Billboard!]!
+  getBillboardTypes: [BillboardType!]!
+  getBillboardType(id: String!): BillboardType!
 }
 
 type Mutation {
@@ -63,4 +94,10 @@ type Mutation {
   createSupplierContact(supplierContact: SupplierContactInput!, supplierId: String!, supplierContactRoleIds: [String!]!): SupplierContact!
   updateSupplierContact(supplierContact: SupplierContactInput!): SupplierContact!
   deleteSupplierContact(id: String!): SupplierContact!
+  createBillboard(billboard: BillboardInput!): Billboard!
+  updateBillboard(billboard: BillboardInput!): Billboard!
+  deleteBillboard(id: String!): Billboard!
+  createBillboardType(billboardType: BillboardTypeInput!): BillboardType!
+  updateBillboardType(billboardType: BillboardTypeInput!): BillboardType!
+  deleteBillboardType(id: String!): BillboardType!
 }

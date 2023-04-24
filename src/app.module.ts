@@ -7,6 +7,8 @@ import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
 import { SupplierResolver } from './resolvers/supplier.resolver';
 import { SupplierService } from './services/supplier/supplier.service';
+import { BillboardResolver } from './resolvers/billboard.resolver';
+import { BillboardService } from './services/billboard/billboard.service';
 
 @Module({
   imports: [
@@ -27,6 +29,12 @@ import { SupplierService } from './services/supplier/supplier.service';
     }),
   ],
   controllers: [],
-  providers: [AppService, SupplierResolver, SupplierService],
+  providers: [
+    AppService,
+    SupplierResolver,
+    SupplierService,
+    BillboardResolver,
+    BillboardService,
+  ],
 })
 export class AppModule {}

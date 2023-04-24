@@ -1,11 +1,11 @@
 import { ObjectType, InputType, Field } from '@nestjs/graphql';
 
 @ObjectType()
-@InputType('SupplierContactRoleInput')
-export class SupplierContactRole {
+@InputType('BillboardTypeInput')
+export class BillboardType {
   @Field(() => String, { nullable: true })
-  _id?: string;
+  id?: string;
 
   @Field(() => String, { nullable: true })
-  role: string;
+  name: string;
 }

@@ -75,8 +75,10 @@ export class SupplierResolver {
 
   /* Supplier Contact */
   @Query(() => [SupplierContact])
-  async getSupplierContacts(): Promise<SupplierContact[]> {
-    return this.supplierService.getSupplierContacts();
+  async getSupplierContacts(
+    @Args('supplierId', { type: () => String }) supplierId: string,
+  ): Promise<SupplierContact[]> {
+    return this.supplierService.getSupplierContactsBySupplierId(supplierId);
   }
 
   @Mutation(() => SupplierContact)

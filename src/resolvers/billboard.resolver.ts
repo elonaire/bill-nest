@@ -2,6 +2,8 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Billboard } from 'src/models/billboard.model';
 import { BillboardService } from 'src/services/billboard/billboard.service';
 import { Billboard as BillboardSchema } from 'src/database/collections/billboard/billboard.schema';
+import { BillboardType as BillboardTypeSchema } from 'src/database/collections/billboard/billboard-type.schema';
+import { BillboardType } from 'src/models/billboard-type.model';
 
 @Resolver(() => Billboard)
 export class BillboardResolver {
@@ -31,5 +33,41 @@ export class BillboardResolver {
     @Args('id', { type: () => String }) id: string,
   ): Promise<any> {
     return this.billboardService.deleteBillboard(id);
+  }
+
+  /* BillboardType */
+  @Mutation(() => BillboardType)
+  async createBillboardType(
+    @Args('billboardType', { type: () => BillboardType })
+    billboardType: BillboardTypeSchema,
+  ): Promise<BillboardType> {
+    return this.billboardService.createBillboardType(billboardType);
+  }
+
+  @Query(() => [BillboardType])
+  async getBillboardTypes(): Promise<BillboardType[]> {
+    return this.billboardService.getBillboardTypes();
+  }
+
+  @Query(() => BillboardType)
+  async getBillboardType(
+    @Args('id', { type: () => String }) id: string,
+  ): Promise<BillboardType> {
+    return this.billboardService.getBillboardType(id);
+  }
+
+  @Mutation(() => BillboardType)
+  async updateBillboardType(
+    @Args('billboardType', { type: () => BillboardType })
+    billboardType: BillboardTypeSchema,
+  ): Promise<any> {
+    return this.billboardService.updateBillboardType(billboardType);
+  }
+
+  @Mutation(() => BillboardType)
+  async deleteBillboardType(
+    @Args('id', { type: () => String }) id: string,
+  ): Promise<any> {
+    return this.billboardService.deleteBillboardType(id);
   }
 }

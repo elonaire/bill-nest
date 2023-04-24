@@ -16,6 +16,11 @@ import {
   SupplierContact,
   SupplierContactSchema,
 } from './collections/supplier/supplier-contact.schema';
+import {
+  BillboardType,
+  BillboardTypeSchema,
+} from './collections/billboard/billboard-type.schema';
+import { City, CitySchema } from './collections/cities/city.schema';
 
 @Module({
   imports: [
@@ -24,6 +29,8 @@ import {
       { name: Billboard.name, schema: BillboardSchema },
       { name: SupplierContactRole.name, schema: SupplierContactRoleSchema },
       { name: SupplierContact.name, schema: SupplierContactSchema },
+      { name: BillboardType.name, schema: BillboardTypeSchema },
+      { name: City.name, schema: CitySchema },
     ]),
   ],
   exports: [MongooseModule],
