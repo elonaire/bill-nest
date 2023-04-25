@@ -9,6 +9,8 @@ import { SupplierResolver } from './resolvers/supplier.resolver';
 import { SupplierService } from './services/supplier/supplier.service';
 import { BillboardResolver } from './resolvers/billboard.resolver';
 import { BillboardService } from './services/billboard/billboard.service';
+import { CityResolver } from './resolvers/city.resolver';
+import { CityService } from './services/city/city.service';
 
 @Module({
   imports: [
@@ -35,6 +37,8 @@ import { BillboardService } from './services/billboard/billboard.service';
     SupplierService,
     BillboardResolver,
     BillboardService,
+    CityResolver,
+    CityService,
   ],
 })
 export class AppModule {}

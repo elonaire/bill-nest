@@ -38,6 +38,17 @@ type Billboard {
   totalSize: Float
 }
 
+type City {
+  id: String
+  name: String
+  population: Float
+  men: Float
+  women: Float
+  area: Float
+  socio_economy: String
+  license_holders: [String!]
+}
+
 input SupplierContactRoleInput {
   _id: String
   role: String
@@ -74,6 +85,17 @@ input BillboardInput {
   totalSize: Float
 }
 
+input CityInput {
+  id: String
+  name: String
+  population: Float
+  men: Float
+  women: Float
+  area: Float
+  socio_economy: String
+  license_holders: [String!]
+}
+
 type Query {
   getSuppliers: [Supplier!]!
   getSupplierById(id: String!): Supplier!
@@ -82,6 +104,7 @@ type Query {
   getBillboards: [Billboard!]!
   getBillboardTypes: [BillboardType!]!
   getBillboardType(id: String!): BillboardType!
+  getCities: [City!]!
 }
 
 type Mutation {
@@ -100,4 +123,7 @@ type Mutation {
   createBillboardType(billboardType: BillboardTypeInput!): BillboardType!
   updateBillboardType(billboardType: BillboardTypeInput!): BillboardType!
   deleteBillboardType(id: String!): BillboardType!
+  createCity(city: CityInput!): City!
+  updateCity(city: CityInput!): City!
+  deleteCity(id: String!): City!
 }
