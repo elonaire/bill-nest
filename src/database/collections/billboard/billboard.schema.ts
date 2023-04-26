@@ -1,6 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { BillboardType } from './billboard-type.schema';
+import { Supplier } from '../supplier/supplier.schema';
+import { City } from '../cities/city.schema';
 
 @Schema({
   timestamps: true,
@@ -16,10 +18,16 @@ export class Billboard extends Document {
   billboardNumber: number;
 
   @Prop({ required: true })
-  billboardType: BillboardType;
+  type: BillboardType;
 
   @Prop({ required: true })
   totalSize: number;
+
+  @Prop({ required: true })
+  supplier: Supplier;
+
+  @Prop({ required: true })
+  city: City;
 }
 
 export const BillboardSchema = SchemaFactory.createForClass(Billboard);

@@ -1,5 +1,7 @@
 import { ObjectType, InputType, Field } from '@nestjs/graphql';
 import { BillboardType } from './billboard-type.model';
+import { Supplier } from './supplier.model';
+import { City } from './city.model';
 
 @ObjectType()
 @InputType('BillboardInput')
@@ -13,9 +15,15 @@ export class Billboard {
   @Field(() => Number, { nullable: true })
   billboardNumber: number;
 
-  @Field(() => String, { nullable: true })
-  billboardType: BillboardType;
+  @Field(() => BillboardType, { nullable: true })
+  type: BillboardType;
 
   @Field(() => Number, { nullable: true })
   totalSize: number;
+
+  @Field(() => Supplier, { nullable: true })
+  supplier: Supplier;
+
+  @Field(() => City, { nullable: true })
+  city: City;
 }

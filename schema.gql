@@ -30,14 +30,6 @@ type BillboardType {
   name: String
 }
 
-type Billboard {
-  id: String
-  address: String
-  billboardNumber: Float
-  billboardType: String
-  totalSize: Float
-}
-
 type City {
   id: String
   name: String
@@ -47,6 +39,16 @@ type City {
   area: Float
   socio_economy: String
   license_holders: [String!]
+}
+
+type Billboard {
+  id: String
+  address: String
+  billboardNumber: Float
+  type: BillboardType
+  totalSize: Float
+  supplier: Supplier
+  city: City
 }
 
 input SupplierContactRoleInput {
@@ -77,14 +79,6 @@ input BillboardTypeInput {
   name: String
 }
 
-input BillboardInput {
-  id: String
-  address: String
-  billboardNumber: Float
-  billboardType: String
-  totalSize: Float
-}
-
 input CityInput {
   id: String
   name: String
@@ -94,6 +88,16 @@ input CityInput {
   area: Float
   socio_economy: String
   license_holders: [String!]
+}
+
+input BillboardInput {
+  id: String
+  address: String
+  billboardNumber: Float
+  type: BillboardTypeInput
+  totalSize: Float
+  supplier: SupplierInput
+  city: CityInput
 }
 
 type Query {
