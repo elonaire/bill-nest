@@ -11,22 +11,22 @@ export class City extends Document {
   @Prop({ required: true })
   name: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   population: number;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   men: number;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   women: number;
 
-  @Prop({ required: true })
-  area: number;
+  @Prop({ required: false })
+  area: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   socio_economy: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   license_holders: string[];
 }
 

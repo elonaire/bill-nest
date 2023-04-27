@@ -36,7 +36,7 @@ type City {
   population: Float
   men: Float
   women: Float
-  area: Float
+  area: String
   socio_economy: String
   license_holders: [String!]
 }
@@ -90,7 +90,7 @@ input CityInput {
   population: Float
   men: Float
   women: Float
-  area: Float
+  area: String
   socio_economy: String
   license_holders: [String!]
 }
@@ -98,16 +98,6 @@ input CityInput {
 input AddressInput {
   latitude: Float
   longitude: Float
-}
-
-input BillboardInput {
-  id: String
-  address: AddressInput
-  billboardNumber: Float
-  type: BillboardTypeInput
-  totalSize: Float
-  supplier: SupplierInput
-  city: CityInput
 }
 
 type Query {
@@ -140,4 +130,14 @@ type Mutation {
   createCity(city: CityInput!): City!
   updateCity(city: CityInput!): City!
   deleteCity(id: String!): City!
+}
+
+input BillboardInput {
+  id: String
+  address: AddressInput
+  billboardNumber: Float
+  type: String
+  totalSize: Float
+  supplier: String
+  city: String
 }

@@ -5,7 +5,6 @@ import { City } from './city.model';
 import { Address } from './address.model';
 
 @ObjectType()
-@InputType('BillboardInput')
 export class Billboard {
   @Field(() => String, { nullable: true })
   id?: string;
@@ -27,4 +26,29 @@ export class Billboard {
 
   @Field(() => City, { nullable: true })
   city: City;
+}
+
+@ObjectType()
+@InputType('BillboardInput')
+export class BillboardInput {
+  @Field(() => String, { nullable: true })
+  id?: string;
+
+  @Field(() => Address, { nullable: true })
+  address: Address;
+
+  @Field(() => Number, { nullable: true })
+  billboardNumber: number;
+
+  @Field(() => String, { nullable: true })
+  type: string;
+
+  @Field(() => Number, { nullable: true })
+  totalSize: number;
+
+  @Field(() => String, { nullable: true })
+  supplier: string;
+
+  @Field(() => String, { nullable: true })
+  city: string;
 }

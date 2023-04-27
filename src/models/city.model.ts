@@ -18,8 +18,8 @@ export class City {
   @Field(() => Number, { nullable: true })
   women: number;
 
-  @Field(() => Number, { nullable: true })
-  area: number;
+  @Field(() => String, { nullable: true })
+  area: string;
 
   @Field(() => String, { nullable: true })
   socio_economy: string;

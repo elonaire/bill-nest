@@ -1,5 +1,5 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { Billboard } from 'src/models/billboard.model';
+import { Billboard, BillboardInput } from 'src/models/billboard.model';
 import { BillboardService } from 'src/services/billboard/billboard.service';
 import { Billboard as BillboardSchema } from 'src/database/collections/billboard/billboard.schema';
 import { BillboardType as BillboardTypeSchema } from 'src/database/collections/billboard/billboard-type.schema';
@@ -16,14 +16,16 @@ export class BillboardResolver {
 
   @Mutation(() => Billboard)
   async createBillboard(
-    @Args('billboard', { type: () => Billboard }) billboard: BillboardSchema,
+    @Args('billboard', { type: () => BillboardInput })
+    billboard: BillboardInput,
   ): Promise<Billboard> {
     return this.billboardService.createBillboard(billboard);
   }
 
   @Mutation(() => Billboard)
   async updateBillboard(
-    @Args('billboard', { type: () => Billboard }) billboard: BillboardSchema,
+    @Args('billboard', { type: () => BillboardInput })
+    billboard: BillboardSchema,
   ): Promise<any> {
     return this.billboardService.updateBillboard(billboard);
   }
