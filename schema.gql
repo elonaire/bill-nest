@@ -41,9 +41,14 @@ type City {
   license_holders: [String!]
 }
 
+type Address {
+  latitude: Float
+  longitude: Float
+}
+
 type Billboard {
   id: String
-  address: String
+  address: Address
   billboardNumber: Float
   type: BillboardType
   totalSize: Float
@@ -90,9 +95,14 @@ input CityInput {
   license_holders: [String!]
 }
 
+input AddressInput {
+  latitude: Float
+  longitude: Float
+}
+
 input BillboardInput {
   id: String
-  address: String
+  address: AddressInput
   billboardNumber: Float
   type: BillboardTypeInput
   totalSize: Float

@@ -3,6 +3,7 @@ import { Document } from 'mongoose';
 import { BillboardType } from './billboard-type.schema';
 import { Supplier } from '../supplier/supplier.schema';
 import { City } from '../cities/city.schema';
+import { Address } from './address.schema';
 
 @Schema({
   timestamps: true,
@@ -12,7 +13,7 @@ import { City } from '../cities/city.schema';
 })
 export class Billboard extends Document {
   @Prop({ required: true })
-  address: string;
+  address: Address;
 
   @Prop({ required: true })
   billboardNumber: number;
