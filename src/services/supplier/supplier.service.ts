@@ -25,11 +25,20 @@ export class SupplierService {
   }
 
   async updateSupplier(supplier: Supplier) {
+    console.log('supplier', supplier);
+
     return this.supplierModel.updateOne({ _id: supplier.id }, supplier);
   }
 
   async deleteSupplier(id: string) {
-    return this.supplierModel.deleteOne({ _id: id });
+    const foundSupplier = await this.supplierModel.findById(id);
+    const deletedSupplier = await this.supplierModel.deleteOne({ _id: id });
+
+    if (deletedSupplier.deletedCount > 0) {
+      return foundSupplier;
+    } else {
+      return deletedSupplier;
+    }
   }
 
   async getSupplier(id: string) {
@@ -50,19 +59,19 @@ export class SupplierService {
   }
 
   async updateSupplierContactRole(supplierContactRole: SupplierContactRole) {
-    return this.supplierContactRoleModel.updateOne(
+    return await this.supplierContactRoleModel.updateOne(
       { _id: supplierContactRole.id },
       supplierContactRole,
     );
   }
 
   async deleteSupplierContactRole(id: string) {
-    return this.supplierContactRoleModel.deleteOne({ _id: id });
+    return await this.supplierContactRoleModel.deleteOne({ _id: id });
   }
 
   /* Supplier Contact */
   async getSupplierContacts() {
-    return this.supplierContactModel.find();
+    return await this.supplierContactModel.find();
   }
 
   async createSupplierContact(
@@ -78,8 +87,6 @@ export class SupplierService {
       );
       supplierContact.role.push(supplierContactRole);
     }
-
-    console.log('supplierContact', supplierContact);
 
     const createdSupplierContact = await this.supplierContactModel.create(
       supplierContact,
@@ -101,15 +108,22 @@ export class SupplierService {
   }
 
   async deleteSupplierContact(id: string) {
+    const supplierContact = await this.supplierContactModel.findById(id);
+    console.log('supplierContact', supplierContact);
+
     const deletedSupplierContact = await this.supplierContactModel.deleteOne({
       _id: id,
     });
 
-    await this.supplierModel.updateMany(
-      { 'contacts._id': id },
-      { $pull: { contacts: { _id: id } } },
-    );
-
-    return deletedSupplierContact;
+    if (deletedSupplierContact.deletedCount > 0) {
+      // TODO: Remove supplier contact from supplier
+      await this.supplierModel.updateMany(
+        { 'contacts._id': id },
+        { $pull: { contacts: { _id: id } } },
+      );
+      return supplierContact;
+    } else {
+      return deletedSupplierContact;
+    }
   }
 }

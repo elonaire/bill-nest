@@ -67,38 +67,57 @@ export class BillboardService {
       type: billboardType,
     });
 
-    return this.billboardModel.create(newBillboard);
+    return await this.billboardModel.create(newBillboard);
   }
 
   async updateBillboard(billboard: Billboard) {
-    return this.billboardModel.updateOne({ _id: billboard.id }, billboard);
+    return await this.billboardModel.updateOne(
+      { _id: billboard.id },
+      billboard,
+    );
   }
 
   async deleteBillboard(id: string) {
-    return this.billboardModel.deleteOne({ _id: id });
+    const billboard = await this.billboardModel.findById(id);
+    const deletedBillboard = await this.billboardModel.deleteOne({ _id: id });
+
+    if (deletedBillboard.deletedCount > 0) {
+      return billboard;
+    } else {
+      return deletedBillboard;
+    }
   }
 
   /* Billboard Type */
   async createBillboardType(billboardType: BillboardType) {
-    return this.billboardTypeModel.create(billboardType);
+    return await this.billboardTypeModel.create(billboardType);
   }
 
   async updateBillboardType(billboardType: BillboardType) {
-    return this.billboardTypeModel.updateOne(
+    return await this.billboardTypeModel.updateOne(
       { _id: billboardType.id },
       billboardType,
     );
   }
 
   async deleteBillboardType(id: string) {
-    return this.billboardTypeModel.deleteOne({ _id: id });
+    const billboardType = await this.billboardTypeModel.findById(id);
+    const deletedBillboardType = await this.billboardTypeModel.deleteOne({
+      _id: id,
+    });
+
+    if (deletedBillboardType.deletedCount > 0) {
+      return billboardType;
+    } else {
+      return deletedBillboardType;
+    }
   }
 
   async getBillboardTypes() {
-    return this.billboardTypeModel.find();
+    return await this.billboardTypeModel.find();
   }
 
   async getBillboardType(id: string) {
-    return this.billboardTypeModel.findById(id);
+    return await this.billboardTypeModel.findById(id);
   }
 }

@@ -13,6 +13,12 @@ export class Address extends Document {
 
   @Prop({ required: true })
   longitude: number;
+
+  @Prop({ required: true })
+  formattedAddress: string;
+
+  @Prop({ required: true })
+  neighborhood: string;
 }
 
 export const AddressSchema = SchemaFactory.createForClass(Address);

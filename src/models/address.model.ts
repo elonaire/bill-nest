@@ -8,4 +8,10 @@ export class Address {
 
   @Field(() => Float, { nullable: true })
   longitude: number;
+
+  @Field({ nullable: true })
+  formattedAddress: string;
+
+  @Field({ nullable: true })
+  neighborhood: string;
 }
