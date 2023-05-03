@@ -21,14 +21,68 @@ export class Billboard extends Document {
   @Prop({ required: true })
   type: BillboardType;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   totalSize: number;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   supplier: Supplier;
 
   @Prop({ required: true })
   city: City;
+
+  @Prop({ required: true })
+  width: number;
+
+  @Prop({ required: false })
+  height: number;
+
+  @Prop({ required: false })
+  subType: string;
+
+  @Prop({ required: true })
+  side: string;
+
+  @Prop({ required: false })
+  premiumDescription: string;
+
+  @Prop({ required: false })
+  orientation: string;
+
+  @Prop({ required: true })
+  isActive: boolean;
+
+  @Prop({ required: false })
+  price: string;
+
+  @Prop({ required: false })
+  views: number;
+
+  @Prop({ required: false })
+  rotation: number;
+
+  @Prop({ required: false })
+  image1: string;
+
+  @Prop({ required: false })
+  image2: string;
+
+  @Prop({ required: false })
+  image3: string;
+
+  @Prop({ required: false })
+  image4: string;
+
+  @Prop({ required: false })
+  image5: string;
+
+  @Prop({ required: false })
+  image6: string;
+
+  @Prop({ required: false })
+  image7: string;
+
+  @Prop({ required: false })
+  image8: string;
 }
 
 export const BillboardSchema = SchemaFactory.createForClass(Billboard);

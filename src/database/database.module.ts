@@ -22,6 +22,7 @@ import {
 } from './collections/billboard/billboard-type.schema';
 import { City, CitySchema } from './collections/cities/city.schema';
 import { Address, AddressSchema } from './collections/billboard/address.schema';
+import { File, FileSchema } from './collections/files/file.schema';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { Address, AddressSchema } from './collections/billboard/address.schema';
       { name: BillboardType.name, schema: BillboardTypeSchema },
       { name: City.name, schema: CitySchema },
       { name: Address.name, schema: AddressSchema },
+      { name: File.name, schema: FileSchema },
     ]),
   ],
   exports: [MongooseModule],

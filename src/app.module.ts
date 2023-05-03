@@ -11,6 +11,7 @@ import { BillboardResolver } from './resolvers/billboard.resolver';
 import { BillboardService } from './services/billboard/billboard.service';
 import { CityResolver } from './resolvers/city.resolver';
 import { CityService } from './services/city/city.service';
+import { FileUploadModule } from './file-upload/file-upload.module';
 
 @Module({
   imports: [
@@ -29,6 +30,8 @@ import { CityService } from './services/city/city.service';
       driver: ApolloDriver,
       autoSchemaFile: 'schema.gql',
     }),
+    FileUploadModule,
+    ConfigModule.forRoot(),
   ],
   controllers: [],
   providers: [

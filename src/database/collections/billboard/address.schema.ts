@@ -17,7 +17,7 @@ export class Address extends Document {
   @Prop({ required: true })
   formattedAddress: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   neighborhood: string;
 }
 
