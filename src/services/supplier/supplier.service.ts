@@ -25,9 +25,16 @@ export class SupplierService {
   }
 
   async updateSupplier(supplier: Supplier) {
-    console.log('supplier', supplier);
+    const updatedSupplier = await this.supplierModel.updateOne(
+      { _id: supplier.id },
+      supplier,
+    );
 
-    return this.supplierModel.updateOne({ _id: supplier.id }, supplier);
+    if (updatedSupplier.modifiedCount > 0) {
+      return await this.supplierModel.findById(supplier.id);
+    }
+
+    return updatedSupplier;
   }
 
   async deleteSupplier(id: string) {
@@ -101,15 +108,20 @@ export class SupplierService {
   }
 
   async updateSupplierContact(supplierContact: SupplierContact) {
-    return this.supplierContactModel.updateOne(
-      { _id: supplierContact.id },
+    const updatedSupplierContact = await this.supplierContactModel.updateOne(
+      { _id: supplierContact._id },
       supplierContact,
     );
+
+    if (updatedSupplierContact.modifiedCount > 0) {
+      return await this.supplierContactModel.findById(supplierContact.id);
+    }
+
+    return updatedSupplierContact;
   }
 
   async deleteSupplierContact(id: string) {
     const supplierContact = await this.supplierContactModel.findById(id);
-    console.log('supplierContact', supplierContact);
 
     const deletedSupplierContact = await this.supplierContactModel.deleteOne({
       _id: id,

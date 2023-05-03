@@ -55,21 +55,41 @@ export class AppService {
               const heightIndex = headings.indexOf('height');
               const widthIndex = headings.indexOf('width');
               const sideIndex = headings.indexOf('side');
-              const isActive = headings.indexOf('is active');
+              const isActive = headings.indexOf('isActive');
               const billboardNumberIndex = headings.indexOf('ID');
+              const subTypeIndex = headings.indexOf('subType');
+              const premiumDescriptionIndex =
+                headings.indexOf('premiumDescription');
+              const orientationIndex = headings.indexOf('orientation');
+              const priceIndex = headings.indexOf('price');
+              const viewsIndex = headings.indexOf('views');
+              const rotationIndex = headings.indexOf('rotation');
+              const image1Index = headings.indexOf('image1');
+              const image2Index = headings.indexOf('image2');
+              const image3Index = headings.indexOf('image3');
+              const image4Index = headings.indexOf('image4');
+              const image5Index = headings.indexOf('image5');
+              const image6Index = headings.indexOf('image6');
+              const image7Index = headings.indexOf('image7');
+              const image8Index = headings.indexOf('image8');
+
               // loop through CSV rows and search for address on google maps API
               rows.forEach((row) => {
                 console.log(row);
                 const address = row[addressIndex];
                 this.googleMapsAPI(address).then(async (res) => {
-                  if (!res.data.results.length) return;
-                  console.log(res.data);
-                  const createdAddress = new this.addressModel({
-                    latitude: res.data.results[0].geometry.location.lat,
-                    longitude: res.data.results[0].geometry.location.lng,
-                    formattedAddress: res.data.results[0].formatted_address,
-                    neighborhood: res.data.results[0].vicinity,
-                  });
+                  let createdAddress: any;
+                  if (!res.data.results.length) {
+                    createdAddress = null;
+                  } else {
+                    console.log(res.data);
+                    createdAddress = new this.addressModel({
+                      latitude: res.data.results[0].geometry.location.lat,
+                      longitude: res.data.results[0].geometry.location.lng,
+                      formattedAddress: res.data.results[0].formatted_address,
+                      neighborhood: res.data.results[0].vicinity,
+                    });
+                  }
 
                   const newCity = new this.cityModel({
                     name: row[cityIndex],
@@ -93,6 +113,20 @@ export class AppService {
                     side: row[sideIndex],
                     isActive: row[isActive] === 'yes' ? true : false,
                     billboardNumber: row[billboardNumberIndex],
+                    subType: row[subTypeIndex],
+                    premiumDescription: row[premiumDescriptionIndex],
+                    orientation: row[orientationIndex],
+                    price: row[priceIndex],
+                    views: row[viewsIndex],
+                    rotation: row[rotationIndex],
+                    image1: row[image1Index],
+                    image2: row[image2Index],
+                    image3: row[image3Index],
+                    image4: row[image4Index],
+                    image5: row[image5Index],
+                    image6: row[image6Index],
+                    image7: row[image7Index],
+                    image8: row[image8Index],
                   });
 
                   await this.billboardModel.create(newBillboard);

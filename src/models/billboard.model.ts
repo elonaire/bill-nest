@@ -26,6 +26,60 @@ export class Billboard {
 
   @Field(() => City, { nullable: true })
   city: City;
+
+  @Field(() => Number, { nullable: true })
+  width: number;
+
+  @Field(() => Number, { nullable: true })
+  height: number;
+
+  @Field(() => String, { nullable: true })
+  subType: string;
+
+  @Field(() => String, { nullable: true })
+  side: string;
+
+  @Field(() => String, { nullable: true })
+  premiumDescription: string;
+
+  @Field(() => String, { nullable: true })
+  orientation: string;
+
+  @Field(() => Boolean, { nullable: true })
+  isActive: boolean;
+
+  @Field(() => String, { nullable: true })
+  price: string;
+
+  @Field(() => Number, { nullable: true })
+  views: number;
+
+  @Field(() => Number, { nullable: true })
+  rotation: number;
+
+  @Field(() => String, { nullable: true })
+  image1: string;
+
+  @Field(() => String, { nullable: true })
+  image2: string;
+
+  @Field(() => String, { nullable: true })
+  image3: string;
+
+  @Field(() => String, { nullable: true })
+  image4: string;
+
+  @Field(() => String, { nullable: true })
+  image5: string;
+
+  @Field(() => String, { nullable: true })
+  image6: string;
+
+  @Field(() => String, { nullable: true })
+  image7: string;
+
+  @Field(() => String, { nullable: true })
+  image8: string;
 }
 
 @ObjectType()
@@ -51,4 +105,58 @@ export class BillboardInput {
 
   @Field(() => String, { nullable: true })
   city: string;
+
+  @Field(() => Number, { nullable: true })
+  width: number;
+
+  @Field(() => Number, { nullable: true })
+  height: number;
+
+  @Field(() => String, { nullable: true })
+  subType: string;
+
+  @Field(() => String, { nullable: true })
+  side: string;
+
+  @Field(() => String, { nullable: true })
+  premiumDescription: string;
+
+  @Field(() => String, { nullable: true })
+  orientation: string;
+
+  @Field(() => Boolean, { nullable: true })
+  isActive: boolean;
+
+  @Field(() => String, { nullable: true })
+  price: string;
+
+  @Field(() => Number, { nullable: true })
+  views: number;
+
+  @Field(() => Number, { nullable: true })
+  rotation: number;
+
+  @Field(() => String, { nullable: true })
+  image1: string;
+
+  @Field(() => String, { nullable: true })
+  image2: string;
+
+  @Field(() => String, { nullable: true })
+  image3: string;
+
+  @Field(() => String, { nullable: true })
+  image4: string;
+
+  @Field(() => String, { nullable: true })
+  image5: string;
+
+  @Field(() => String, { nullable: true })
+  image6: string;
+
+  @Field(() => String, { nullable: true })
+  image7: string;
+
+  @Field(() => String, { nullable: true })
+  image8: string;
 }

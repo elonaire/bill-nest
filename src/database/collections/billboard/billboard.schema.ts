@@ -12,7 +12,7 @@ import { Address } from './address.schema';
   collection: 'billboards',
 })
 export class Billboard extends Document {
-  @Prop({ required: true })
+  @Prop({ required: false })
   address: Address;
 
   @Prop({ required: true })

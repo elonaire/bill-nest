@@ -56,6 +56,24 @@ type Billboard {
   totalSize: Float
   supplier: Supplier
   city: City
+  width: Float
+  height: Float
+  subType: String
+  side: String
+  premiumDescription: String
+  orientation: String
+  isActive: Boolean
+  price: String
+  views: Float
+  rotation: Float
+  image1: String
+  image2: String
+  image3: String
+  image4: String
+  image5: String
+  image6: String
+  image7: String
+  image8: String
 }
 
 input SupplierContactRoleInput {
@@ -144,4 +162,22 @@ input BillboardInput {
   totalSize: Float
   supplier: String
   city: String
+  width: Float
+  height: Float
+  subType: String
+  side: String
+  premiumDescription: String
+  orientation: String
+  isActive: Boolean
+  price: String
+  views: Float
+  rotation: Float
+  image1: String
+  image2: String
+  image3: String
+  image4: String
+  image5: String
+  image6: String
+  image7: String
+  image8: String
 }

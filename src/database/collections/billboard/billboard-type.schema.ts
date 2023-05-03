@@ -8,7 +8,7 @@ import { Document } from 'mongoose';
   collection: 'billboardtypes',
 })
 export class BillboardType extends Document {
-  @Prop({ required: true })
+  @Prop({ required: true, unique: true })
   name: string;
 }
 
