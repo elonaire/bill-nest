@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import * as fs from 'fs';
-// import { File } from './database/collections/files/file.schema';
+import { File } from './database/collections/files/file.schema';
 import { Model } from 'mongoose';
 
 import * as csvParser from 'csv-parse';
@@ -10,6 +10,9 @@ import { Address } from './database/collections/billboard/address.schema';
 import { City } from './database/collections/cities/city.schema';
 import { BillboardType } from './database/collections/billboard/billboard-type.schema';
 import { Billboard } from './database/collections/billboard/billboard.schema';
+import * as path from 'path';
+import { Response } from 'express';
+import * as mime from 'mime';
 
 export enum MimeType {
   PDF = 'application/pdf',
@@ -22,9 +25,11 @@ export enum MimeType {
 
 @Injectable()
 export class AppService {
+  private readonly uploadFolder = 'uploads';
+
   constructor(
-    // @InjectModel(File.name)
-    // private readonly fileModel: Model<File>,
+    @InjectModel(File.name)
+    private readonly fileModel: Model<File>,
     @InjectModel(Address.name)
     private readonly addressModel: Model<Address>,
     @InjectModel(City.name)
@@ -179,5 +184,38 @@ export class AppService {
         },
       },
     );
+  }
+
+  async handleBulkUpload(files: Express.Multer.File[]) {
+    const promises = files.map((file) => this.fileModel.create(file));
+    return await Promise.all(promises);
+  }
+
+  async getFile(fileId: string, res: Response) {
+    const file = await this.fileModel.findOne({
+      filename: fileId,
+    });
+
+    const filePath = path.join(this.uploadFolder, fileId);
+
+    if (!fs.existsSync(filePath) || !file) {
+      res.status(404).send({
+        message: 'File not found',
+      });
+      return;
+    }
+
+    // Fetch the stored MIME type from the database using your service or repository
+    const mimeType = file.mimetype;
+    const fileExtension = mime.getExtension(mimeType);
+
+    // If you want to force the browser to download the file, uncomment the following line:
+    res.setHeader(
+      'Content-Disposition',
+      `attachment; filename=${fileId}.${fileExtension}`,
+    );
+
+    // res.setHeader('Content-Type', mimeType);
+    res.sendFile(filePath, { root: '.' });
   }
 }

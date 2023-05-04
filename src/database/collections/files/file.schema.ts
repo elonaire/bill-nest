@@ -31,9 +31,6 @@ export class File extends Document {
 
   @Prop({ required: true })
   size: number;
-
-  @Prop({ required: true })
-  fileExtension: string;
 }
 
 export const FileSchema = SchemaFactory.createForClass(File);

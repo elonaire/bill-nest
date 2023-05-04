@@ -8,7 +8,7 @@ import { DatabaseModule } from 'src/database/database.module';
   imports: [
     MulterModule.registerAsync({
       useFactory: () => ({
-        dest: './upload',
+        dest: './uploads',
       }),
     }),
     DatabaseModule,
