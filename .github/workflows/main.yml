@@ -45,6 +45,6 @@ jobs:
         # key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
         password: ${{ secrets.SERVER_PASSWORD }}
         script: |
-          sudo docker pull elonaire/billboards-backend:latest
-          sudo docker-compose -f docker-compose.yml down
-          sudo docker-compose -f docker-compose.yml up -d
+          docker pull elonaire/billboards-backend:latest
+          docker-compose -f docker-compose.yml down
+          docker-compose -f docker-compose.yml up -d
