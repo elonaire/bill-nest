@@ -5,6 +5,9 @@ services:
     image: elonaire/billboards-frontend:latest
     expose:
       - "80"
+    restart: always
+    depends_on:
+      - backend
     networks:
       - app-network
 
@@ -12,6 +15,9 @@ services:
     build: .
     environment:
       - NODE_ENV=development
+    restart: always
+    depends_on:
+      - mongodb
     expose:
       - "3000"
     networks:
@@ -33,6 +39,7 @@ services:
     depends_on:
       - frontend
       - backend
+      - mongodb
     networks:
       - app-network
 
