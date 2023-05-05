@@ -54,7 +54,7 @@ jobs:
         # key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
         password: ${{ secrets.SERVER_PASSWORD }}
         script: |
+          CI=true docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           CI=true docker-compose down
           CI=true docker image prune -a
           CI=true docker-compose up -d
-          CI=true docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
