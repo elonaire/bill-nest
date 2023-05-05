@@ -45,6 +45,9 @@ services:
     networks:
       - app-network
 
+volumes:
+  mongodb:
+  
 networks:
   app-network:
     driver: bridge
