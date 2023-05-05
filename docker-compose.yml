@@ -17,6 +17,15 @@ services:
     networks:
       - app-network
 
+  mongodb:
+    image: mongo:4.4-bionic
+    container_name: mongodb
+    restart: always
+    volumes:
+      - mongodb-data:/data/db
+    ports:
+      - "27017:27017"
+
   nginx:
     build: ./nginx
     ports:
