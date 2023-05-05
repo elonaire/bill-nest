@@ -55,7 +55,6 @@ jobs:
         password: ${{ secrets.SERVER_PASSWORD }}
         script: |
           export CI=true
-          docker pull elonaire/billboards-backend:latest
           docker-compose down
           docker image prune -a
           docker-compose up -d
