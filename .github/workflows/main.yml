@@ -56,5 +56,6 @@ jobs:
         script: |
           export CI=true
           docker pull elonaire/billboards-backend:latest
-          docker-compose -f docker-compose.yml down
-          docker-compose -f docker-compose.yml up -d
+          docker-compose down
+          docker image prune -a
+          docker-compose up -d
