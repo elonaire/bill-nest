@@ -3,7 +3,7 @@ version: "3.9"
 services:
   frontend:
     image: elonaire/billboards-frontend:latest
-    expose:
+    ports:
       - "8080:80"
     restart: always
     depends_on:
@@ -18,7 +18,7 @@ services:
     restart: always
     depends_on:
       - mongodb
-    expose:
+    ports:
       - "3000:3000"
     networks:
       - app-network
