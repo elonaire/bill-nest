@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.3"
 
 services:
   frontend:
@@ -47,7 +47,7 @@ services:
 
 volumes:
   mongodb-data: {}
-  
+
 networks:
   app-network:
     driver: bridge
