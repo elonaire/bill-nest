@@ -15,8 +15,8 @@ FROM node:18-alpine
 WORKDIR /app
 
 COPY --from=build /app/dist /app/dist
-COPY package*.json ./
-RUN npm ci --only=production
+COPY package.json yarn.lock ./
+RUN yarn --production=true
 
 EXPOSE 3000
 
