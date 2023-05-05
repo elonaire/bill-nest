@@ -44,7 +44,7 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}
         password: ${{ secrets.SERVER_PASSWORD }}
         source: "nginx/,docker-compose.yml"
-        target: ~
+        target: ~/
 
     - name: Deploy to server via SSH
       uses: appleboy/ssh-action@v0.1.4
