@@ -12,7 +12,7 @@ services:
       - app-network
 
   backend:
-    build: .
+    image: elonaire/billboards-backend:latest
     environment:
       - NODE_ENV=development
     restart: always
