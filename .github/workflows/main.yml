@@ -1,4 +1,4 @@
-name: CI/CD
+name: Billboards backend CI/CD
 
 # Controls when the workflow will run
 on:
@@ -45,6 +45,6 @@ jobs:
         # key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
         password: ${{ secrets.SERVER_PASSWORD }}
         script: |
-          docker pull elonaire/billboards-backend:latest
-          docker-compose -f docker-compose.yml down
-          docker-compose -f docker-compose.yml up -d
+          sudo docker pull elonaire/billboards-backend:latest
+          sudo docker-compose -f docker-compose.yml down
+          sudo docker-compose -f docker-compose.yml up -d
