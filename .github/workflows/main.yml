@@ -62,7 +62,7 @@ jobs:
   automerge:
     runs-on: ubuntu-latest
 
-    needs: [build]
+    needs: [build_and_deploy]
 
     steps:
       - id: automerge
