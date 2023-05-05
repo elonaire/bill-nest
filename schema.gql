@@ -48,6 +48,18 @@ type Address {
   neighborhood: String
 }
 
+type File {
+  _id: String
+  fieldname: String
+  originalname: String
+  encoding: String
+  mimetype: String
+  destination: String
+  filename: String
+  path: String
+  size: Float
+}
+
 type Billboard {
   id: String
   address: Address
@@ -63,17 +75,10 @@ type Billboard {
   premiumDescription: String
   orientation: String
   isActive: Boolean
-  price: String
+  price: Float
   views: Float
   rotation: Float
-  image1: String
-  image2: String
-  image3: String
-  image4: String
-  image5: String
-  image6: String
-  image7: String
-  image8: String
+  images: [File!]
 }
 
 input SupplierContactRoleInput {
@@ -120,6 +125,18 @@ input AddressInput {
   longitude: Float
   formattedAddress: String
   neighborhood: String
+}
+
+input FileInput {
+  _id: String
+  fieldname: String
+  originalname: String
+  encoding: String
+  mimetype: String
+  destination: String
+  filename: String
+  path: String
+  size: Float
 }
 
 type Query {
@@ -169,15 +186,8 @@ input BillboardInput {
   premiumDescription: String
   orientation: String
   isActive: Boolean
-  price: String
+  price: Float
   views: Float
   rotation: Float
-  image1: String
-  image2: String
-  image3: String
-  image4: String
-  image5: String
-  image6: String
-  image7: String
-  image8: String
+  images: [FileInput!]
 }

@@ -4,6 +4,7 @@ import { BillboardType } from './billboard-type.schema';
 import { Supplier } from '../supplier/supplier.schema';
 import { City } from '../cities/city.schema';
 import { Address } from './address.schema';
+import { File } from '../files/file.schema';
 
 @Schema({
   timestamps: true,
@@ -52,7 +53,7 @@ export class Billboard extends Document {
   isActive: boolean;
 
   @Prop({ required: false })
-  price: string;
+  price: number;
 
   @Prop({ required: false })
   views: number;
@@ -61,28 +62,7 @@ export class Billboard extends Document {
   rotation: number;
 
   @Prop({ required: false })
-  image1: string;
-
-  @Prop({ required: false })
-  image2: string;
-
-  @Prop({ required: false })
-  image3: string;
-
-  @Prop({ required: false })
-  image4: string;
-
-  @Prop({ required: false })
-  image5: string;
-
-  @Prop({ required: false })
-  image6: string;
-
-  @Prop({ required: false })
-  image7: string;
-
-  @Prop({ required: false })
-  image8: string;
+  images: File[];
 }
 
 export const BillboardSchema = SchemaFactory.createForClass(Billboard);

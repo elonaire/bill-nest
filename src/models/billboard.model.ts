@@ -3,6 +3,7 @@ import { BillboardType } from './billboard-type.model';
 import { Supplier } from './supplier.model';
 import { City } from './city.model';
 import { Address } from './address.model';
+import { File } from './file.model';
 
 @ObjectType()
 export class Billboard {
@@ -48,8 +49,8 @@ export class Billboard {
   @Field(() => Boolean, { nullable: true })
   isActive: boolean;
 
-  @Field(() => String, { nullable: true })
-  price: string;
+  @Field(() => Number, { nullable: true })
+  price: number;
 
   @Field(() => Number, { nullable: true })
   views: number;
@@ -57,29 +58,8 @@ export class Billboard {
   @Field(() => Number, { nullable: true })
   rotation: number;
 
-  @Field(() => String, { nullable: true })
-  image1: string;
-
-  @Field(() => String, { nullable: true })
-  image2: string;
-
-  @Field(() => String, { nullable: true })
-  image3: string;
-
-  @Field(() => String, { nullable: true })
-  image4: string;
-
-  @Field(() => String, { nullable: true })
-  image5: string;
-
-  @Field(() => String, { nullable: true })
-  image6: string;
-
-  @Field(() => String, { nullable: true })
-  image7: string;
-
-  @Field(() => String, { nullable: true })
-  image8: string;
+  @Field(() => [File], { nullable: true })
+  images: File[];
 }
 
 @ObjectType()
@@ -127,8 +107,8 @@ export class BillboardInput {
   @Field(() => Boolean, { nullable: true })
   isActive: boolean;
 
-  @Field(() => String, { nullable: true })
-  price: string;
+  @Field(() => Number, { nullable: true })
+  price: number;
 
   @Field(() => Number, { nullable: true })
   views: number;
@@ -136,27 +116,6 @@ export class BillboardInput {
   @Field(() => Number, { nullable: true })
   rotation: number;
 
-  @Field(() => String, { nullable: true })
-  image1: string;
-
-  @Field(() => String, { nullable: true })
-  image2: string;
-
-  @Field(() => String, { nullable: true })
-  image3: string;
-
-  @Field(() => String, { nullable: true })
-  image4: string;
-
-  @Field(() => String, { nullable: true })
-  image5: string;
-
-  @Field(() => String, { nullable: true })
-  image6: string;
-
-  @Field(() => String, { nullable: true })
-  image7: string;
-
-  @Field(() => String, { nullable: true })
-  image8: string;
+  @Field(() => [File], { nullable: true })
+  images: File[];
 }
