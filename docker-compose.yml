@@ -42,6 +42,8 @@ services:
       - frontend
       - backend
       - mongodb
+    volumes:
+      - ./certs:/etc/nginx/certs
     networks:
       - app-network
 
