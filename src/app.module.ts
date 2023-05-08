@@ -19,7 +19,7 @@ import { FileUploadModule } from './file-upload/file-upload.module';
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: () => {
-        const url = 'mongodb://localhost:27017/billboardz_db';
+        const url = `mongodb://${process.env.DB_HOST}:27017/billboardz_db`;
         return {
           uri: url,
         };

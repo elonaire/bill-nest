@@ -3,6 +3,12 @@ FROM node:18-alpine as build
 
 WORKDIR /app
 
+# Build args
+ARG DB_HOST
+
+# Environment variables
+ENV DB_HOST=$DB_HOST
+
 COPY package.json yarn.lock ./
 RUN yarn install
 
