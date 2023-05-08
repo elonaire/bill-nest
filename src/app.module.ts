@@ -20,6 +20,8 @@ import { FileUploadModule } from './file-upload/file-upload.module';
       imports: [ConfigModule],
       useFactory: () => {
         const url = `mongodb://${process.env.DB_HOST}:27017/billboardz_db`;
+        console.log('url', url);
+
         return {
           uri: url,
         };
