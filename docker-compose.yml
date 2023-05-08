@@ -3,6 +3,7 @@ version: "3.9"
 services:
   frontend:
     image: elonaire/billboards-frontend:latest
+    container_name: billboards-frontend
     ports:
       - "8080:80"
     restart: always
@@ -13,8 +14,7 @@ services:
 
   backend:
     image: elonaire/billboards-backend:latest
-    environment:
-      - NODE_ENV=development
+    container_name: billboards-api
     restart: always
     depends_on:
       - mongodb
@@ -36,6 +36,7 @@ services:
 
   nginx:
     image: nginx:latest
+    container_name: nginx
     ports:
       - "80:80"
     depends_on:
