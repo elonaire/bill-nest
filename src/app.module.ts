@@ -13,17 +13,13 @@ import { CityResolver } from './resolvers/city.resolver';
 import { CityService } from './services/city/city.service';
 import { FileUploadModule } from './file-upload/file-upload.module';
 
-const url = `mongodb://${process.env.DB_HOST || 'mongodb'}:27017/billboardz_db`;
-
 @Module({
   imports: [
     DatabaseModule,
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: () => {
-        // const url = `mongodb://${process.env.DB_HOST}:27017/billboardz_db`;
-        // console.log('url', url);
-
+        const url = `mongodb://${process.env.DB_HOST}/billboardz_db`;
         return {
           uri: url,
         };
