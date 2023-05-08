@@ -21,7 +21,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DB_HOST="${DB_HOST}"
+      - DB_HOST=mongodb
     networks:
       - app-network
 
