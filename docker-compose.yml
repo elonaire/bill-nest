@@ -34,9 +34,9 @@ services:
     networks:
       - app-network
 
-  nginx:
+  gateway:
     image: nginx:latest
-    container_name: nginx
+    container_name: gateway
     ports:
       - "80:80"
     depends_on:
