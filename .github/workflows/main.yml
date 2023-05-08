@@ -36,6 +36,8 @@ jobs:
         context: .
         push: true
         tags: elonaire/billboards-backend:latest
+        build-args: |
+          DB_HOST=${{ secrets.DB_HOST }}
 
     - name: SCP files to server
       uses: appleboy/scp-action@v0.1.4
