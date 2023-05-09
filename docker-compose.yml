@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  frontend:
+  billboards-frontend:
     image: elonaire/billboards-frontend:latest
     container_name: billboards-frontend # must match the name of the container in the nginx config
     ports:
@@ -12,7 +12,7 @@ services:
     networks:
       - app-network
 
-  backend:
+  billboards-api:
     image: elonaire/billboards-backend:latest
     container_name: billboards-api
     restart: always
@@ -43,8 +43,8 @@ services:
       - "80:80"
       - "443:443"
     depends_on:
-      - frontend
-      - backend
+      - billboards-frontend
+      - billboards-api
       - mongodb
     volumes:
       - ./certs:/etc/nginx/certs
