@@ -5,7 +5,7 @@ services:
     image: elonaire/billboards-frontend:latest
     container_name: billboards-frontend # must match the name of the container in the nginx config
     ports:
-      - "8080:80"
+      - "80:80"
     restart: always
     depends_on:
       - backend
