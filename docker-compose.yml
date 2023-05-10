@@ -54,7 +54,7 @@ services:
 
   billboards-user:
     image: elonaire/billboards-user:latest
-    container_name: gateway
+    container_name: billboards-user
     ports:
       - "4200:4200"
       - "4201:4201"
