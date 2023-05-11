@@ -23,6 +23,8 @@ import {
 import { City, CitySchema } from './collections/cities/city.schema';
 import { Address, AddressSchema } from './collections/billboard/address.schema';
 import { File, FileSchema } from './collections/files/file.schema';
+import { SystemRole, SystemRoleSchema } from './collections/user/role.schema';
+import { User, UserSchema } from './collections/user/user.schema';
 
 @Module({
   imports: [
@@ -35,6 +37,8 @@ import { File, FileSchema } from './collections/files/file.schema';
       { name: City.name, schema: CitySchema },
       { name: Address.name, schema: AddressSchema },
       { name: File.name, schema: FileSchema },
+      { name: User.name, schema: UserSchema },
+      { name: SystemRole.name, schema: SystemRoleSchema },
     ]),
   ],
   exports: [MongooseModule],

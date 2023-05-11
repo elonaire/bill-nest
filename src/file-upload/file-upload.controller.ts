@@ -7,16 +7,19 @@ import {
   UploadedFiles,
   UseInterceptors,
   Res,
+  UseGuards,
 } from '@nestjs/common';
 import { AnyFilesInterceptor, FileInterceptor } from '@nestjs/platform-express';
 import { Response } from 'express';
 import { AppService } from 'src/app.service';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('files')
 export class FileUploadController {
   constructor(private readonly appService: AppService) {}
 
   @Post('upload')
+  @UseGuards(AuthGuard)
   @UseInterceptors(
     FileInterceptor('file', {
       dest: './uploads',
@@ -36,6 +39,7 @@ export class FileUploadController {
   }
 
   @Post('upload-bulk')
+  @UseGuards(AuthGuard)
   @UseInterceptors(AnyFilesInterceptor())
   uploadFiles(@UploadedFiles() files: Array<Express.Multer.File>) {
     console.log(files);
@@ -44,6 +48,7 @@ export class FileUploadController {
   }
 
   @Get(':uuid')
+  @UseGuards(AuthGuard)
   async serveFile(
     @Param('uuid') uuid: string,
     @Res() res: Response,

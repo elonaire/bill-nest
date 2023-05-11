@@ -22,6 +22,8 @@ services:
       - "3000:3000"
     environment:
       - DB_HOST=mongodb
+    volumes:
+      - ./uploads:/usr/src/app/uploads
     networks:
       - app-network
 

@@ -81,6 +81,22 @@ type Billboard {
   images: [File!]
 }
 
+type SystemRole {
+  role: String
+}
+
+type User {
+  username: String!
+  email: String!
+  phone: String
+  password: String!
+  roles: [SystemRole!]
+}
+
+type LoginResponse {
+  token: String!
+}
+
 input SupplierContactRoleInput {
   _id: String
   role: String
@@ -139,6 +155,10 @@ input FileInput {
   size: Float
 }
 
+input SystemRoleInput {
+  role: String
+}
+
 type Query {
   getSuppliers: [Supplier!]!
   getSupplierById(id: String!): Supplier!
@@ -148,6 +168,7 @@ type Query {
   getBillboardTypes: [BillboardType!]!
   getBillboardType(id: String!): BillboardType!
   getCities: [City!]!
+  getUsers: [User!]!
 }
 
 type Mutation {
@@ -169,6 +190,9 @@ type Mutation {
   createCity(city: CityInput!): City!
   updateCity(city: CityInput!): City!
   deleteCity(id: String!): City!
+  createUser(user: UserInput!): User!
+  createRole(role: SystemRoleInput!): SystemRole!
+  login(username: String!, password: String!): LoginResponse!
 }
 
 input BillboardInput {
@@ -190,4 +214,12 @@ input BillboardInput {
   views: Float
   rotation: Float
   images: [FileInput!]
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  phone: String
+  password: String!
+  roles: [String!]
 }

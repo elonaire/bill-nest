@@ -4,17 +4,21 @@ import { BillboardService } from 'src/services/billboard/billboard.service';
 import { Billboard as BillboardSchema } from 'src/database/collections/billboard/billboard.schema';
 import { BillboardType as BillboardTypeSchema } from 'src/database/collections/billboard/billboard-type.schema';
 import { BillboardType } from 'src/models/billboard-type.model';
+import { UseGuards } from '@nestjs/common';
+import { AuthGuard } from 'src/auth/auth.guard.gql';
 
 @Resolver(() => Billboard)
 export class BillboardResolver {
   constructor(private readonly billboardService: BillboardService) {}
 
   @Query(() => [Billboard])
+  @UseGuards(AuthGuard)
   async getBillboards(): Promise<Billboard[]> {
     return this.billboardService.getBillboards();
   }
 
   @Mutation(() => Billboard)
+  @UseGuards(AuthGuard)
   async createBillboard(
     @Args('billboard', { type: () => BillboardInput })
     billboard: BillboardInput,
@@ -23,6 +27,7 @@ export class BillboardResolver {
   }
 
   @Mutation(() => Billboard)
+  @UseGuards(AuthGuard)
   async updateBillboard(
     @Args('billboard', { type: () => BillboardInput })
     billboard: BillboardSchema,
@@ -31,6 +36,7 @@ export class BillboardResolver {
   }
 
   @Mutation(() => Billboard)
+  @UseGuards(AuthGuard)
   async deleteBillboard(
     @Args('id', { type: () => String }) id: string,
   ): Promise<any> {
@@ -39,6 +45,7 @@ export class BillboardResolver {
 
   /* BillboardType */
   @Mutation(() => BillboardType)
+  @UseGuards(AuthGuard)
   async createBillboardType(
     @Args('billboardType', { type: () => BillboardType })
     billboardType: BillboardTypeSchema,
@@ -47,11 +54,13 @@ export class BillboardResolver {
   }
 
   @Query(() => [BillboardType])
+  @UseGuards(AuthGuard)
   async getBillboardTypes(): Promise<BillboardType[]> {
     return this.billboardService.getBillboardTypes();
   }
 
   @Query(() => BillboardType)
+  @UseGuards(AuthGuard)
   async getBillboardType(
     @Args('id', { type: () => String }) id: string,
   ): Promise<BillboardType> {
@@ -59,6 +68,7 @@ export class BillboardResolver {
   }
 
   @Mutation(() => BillboardType)
+  @UseGuards(AuthGuard)
   async updateBillboardType(
     @Args('billboardType', { type: () => BillboardType })
     billboardType: BillboardTypeSchema,
@@ -67,6 +77,7 @@ export class BillboardResolver {
   }
 
   @Mutation(() => BillboardType)
+  @UseGuards(AuthGuard)
   async deleteBillboardType(
     @Args('id', { type: () => String }) id: string,
   ): Promise<any> {

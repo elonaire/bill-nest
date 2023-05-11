@@ -6,17 +6,21 @@ import { SupplierContactRole } from 'src/models/supplier-contact-role.model';
 import { SupplierContactRole as SupplierContactRoleSchema } from 'src/database/collections/supplier/supplier-contact-role.schema';
 import { SupplierContact } from 'src/models/supplier-contact.model';
 import { SupplierContact as SupplierContactSchema } from 'src/database/collections/supplier/supplier-contact.schema';
+import { UseGuards } from '@nestjs/common';
+import { AuthGuard } from 'src/auth/auth.guard.gql';
 
 @Resolver(() => Supplier)
 export class SupplierResolver {
   constructor(private readonly supplierService: SupplierService) {}
 
   @Query(() => [Supplier])
+  @UseGuards(AuthGuard)
   async getSuppliers(): Promise<Supplier[]> {
     return this.supplierService.getSuppliers();
   }
 
   @Mutation(() => Supplier)
+  @UseGuards(AuthGuard)
   async createSupplier(
     @Args('supplier', { type: () => Supplier }) supplier: SupplierSchema,
   ): Promise<Supplier> {
@@ -24,6 +28,7 @@ export class SupplierResolver {
   }
 
   @Mutation(() => Supplier)
+  @UseGuards(AuthGuard)
   async updateSupplier(
     @Args('supplier', { type: () => Supplier }) supplier: SupplierSchema,
   ): Promise<any> {
@@ -31,6 +36,7 @@ export class SupplierResolver {
   }
 
   @Mutation(() => Supplier)
+  @UseGuards(AuthGuard)
   async deleteSupplier(
     @Args('id', { type: () => String }) id: string,
   ): Promise<any> {
@@ -38,6 +44,7 @@ export class SupplierResolver {
   }
 
   @Query(() => Supplier)
+  @UseGuards(AuthGuard)
   async getSupplierById(
     @Args('id', { type: () => String }) id: string,
   ): Promise<Supplier> {
@@ -46,11 +53,13 @@ export class SupplierResolver {
 
   /* Supplier Contact Role */
   @Query(() => [SupplierContactRole])
+  @UseGuards(AuthGuard)
   async getSupplierContactRoles(): Promise<SupplierContactRole[]> {
     return this.supplierService.getSupplierContactRoles();
   }
 
   @Mutation(() => SupplierContactRole)
+  @UseGuards(AuthGuard)
   async createSupplierContactRole(
     @Args('supplierContactRole', { type: () => SupplierContactRole })
     supplierContactRole: SupplierContactRoleSchema,
@@ -59,6 +68,7 @@ export class SupplierResolver {
   }
 
   @Mutation(() => SupplierContactRole)
+  @UseGuards(AuthGuard)
   async updateSupplierContactRole(
     @Args('supplierContactRole', { type: () => SupplierContactRole })
     supplierContactRole: SupplierContactRoleSchema,
@@ -67,6 +77,7 @@ export class SupplierResolver {
   }
 
   @Mutation(() => SupplierContactRole)
+  @UseGuards(AuthGuard)
   async deleteSupplierContactRole(
     @Args('id', { type: () => String }) id: string,
   ): Promise<any> {
@@ -75,6 +86,7 @@ export class SupplierResolver {
 
   /* Supplier Contact */
   @Query(() => [SupplierContact])
+  @UseGuards(AuthGuard)
   async getSupplierContacts(
     @Args('supplierId', { type: () => String }) supplierId: string,
   ): Promise<SupplierContact[]> {
@@ -82,6 +94,7 @@ export class SupplierResolver {
   }
 
   @Mutation(() => SupplierContact)
+  @UseGuards(AuthGuard)
   async createSupplierContact(
     @Args('supplierContact', { type: () => SupplierContact })
     supplierContact: SupplierContactSchema,
@@ -97,6 +110,7 @@ export class SupplierResolver {
   }
 
   @Mutation(() => SupplierContact)
+  @UseGuards(AuthGuard)
   async updateSupplierContact(
     @Args('supplierContact', { type: () => SupplierContact })
     supplierContact: SupplierContactSchema,
@@ -105,6 +119,7 @@ export class SupplierResolver {
   }
 
   @Mutation(() => SupplierContact)
+  @UseGuards(AuthGuard)
   async deleteSupplierContact(
     @Args('id', { type: () => String }) id: string,
   ): Promise<any> {
