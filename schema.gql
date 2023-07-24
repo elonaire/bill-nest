@@ -82,6 +82,7 @@ type Billboard {
 }
 
 type SystemRole {
+  id: String
   role: String
 }
 
@@ -156,6 +157,7 @@ input FileInput {
 }
 
 input SystemRoleInput {
+  id: String
   role: String
 }
 

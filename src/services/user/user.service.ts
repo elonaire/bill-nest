@@ -5,7 +5,7 @@ import { SystemRole } from 'src/database/collections/user/role.schema';
 import { User } from 'src/database/collections/user/user.schema';
 import { UserInput } from 'src/models/user.model';
 import { SystemRole as SystemRoleInput } from 'src/models/role.model';
-import bcrypt from 'bcrypt';
+import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { jwtConstants } from 'src/constants';
 
